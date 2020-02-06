@@ -5,9 +5,32 @@
     "tsc": "./node_modules/typescript/bin/tsc",
     "compile": "tsc",
     "start": "gulp",
-    "_test": "node _scripts/test/index.js"
+    "_test": "node _scripts/test/index.js",
+    "lint": "eslint ./pages --ext .js,.ts && stylelint \"pages/**/*.less\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint",
+      "git add"
+    ],
+    "*.{css,less}": [
+      "stylelint",
+      "git add"
+    ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "stylelint": "^13.0.0",
     "typescript": "^3.1.6"
   },
   "dependencies": {
