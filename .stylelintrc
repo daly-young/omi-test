@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-rational-order"],
+  "extends": ["stylelint-config-standard", "stylelint-config-rational-order","stylelint-config-standard-wxss","stylelint-config-recommended-wxss"],
   "rules": {
     "order/properties-order": [],
     "at-rule-no-unknown": null,
